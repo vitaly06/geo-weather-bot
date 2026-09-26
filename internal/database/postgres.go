@@ -1,6 +1,7 @@
 package database
 
 import (
+	"github.com/vitaly06/geo-weather-bot/internal/domain"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -14,4 +15,6 @@ func ConnectDb(dsn string) (*gorm.DB, error) {
 	return db, err
 }
 
-// AutoMigrate
+func AutoMigrate(db *gorm.DB) error {
+	return db.AutoMigrate(&domain.User{})
+}
