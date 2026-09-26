@@ -9,6 +9,7 @@ import (
 
 type Config struct {
 	TelegramBotToken string
+	Dsn              string
 }
 
 func NewConfig() *Config {
@@ -20,6 +21,7 @@ func NewConfig() *Config {
 
 	return &Config{
 		TelegramBotToken: LoadEnv("TELEGRAM_BOT_TOKEN", "no value"),
+		Dsn:              LoadEnv("DSN", "host=localhost user=your_username password=your_strong_password dbname=geo_weather_db port=5432"),
 	}
 }
 
